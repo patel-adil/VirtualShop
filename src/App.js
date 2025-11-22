@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { MarketplaceProvider } from './context/MarketplaceContext';
+import { testFirebaseConnection } from './firebase';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
@@ -12,6 +13,14 @@ import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
+  // Test Firebase connection on app start
+  useEffect(() => {
+    const isConnected = testFirebaseConnection();
+    if (isConnected) {
+      console.log('🚀 VirtualShop is ready!');
+    }
+  }, []);
+
   return (
     <MarketplaceProvider>
       <Router>
