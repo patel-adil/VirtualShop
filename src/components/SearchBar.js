@@ -48,3 +48,5 @@ const SearchBar = ({ onSearch, onCategoryFilter }) => {
 
 export default SearchBar;
 
+
+
